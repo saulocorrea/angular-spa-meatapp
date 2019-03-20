@@ -30,3 +30,16 @@ git add .
 git commit -m "Adicionando arquivos criados pelo angular-cli."
 git remote add origin https://github.com/saulocorrea/curso-angular.git
 git push -u origin master
+
+Username for 'https://github.com': sauloejrv@gmail.com
+Password for 'https://sauloejrv@gmail.com@github.com': Pai50Mae52Eu88
+
+
+C:\Users\Saulo\Desktop\CursoTINO\angular\angular\academy>ng g c Student
+CREATE src/app/student/student.component.html (26 bytes)
+CREATE src/app/student/student.component.spec.ts (635 bytes)
+CREATE src/app/student/student.component.ts (274 bytes)
+CREATE src/app/student/student.component.sass (0 bytes)
+UPDATE src/app/app.module.ts (561 bytes)
+
+
