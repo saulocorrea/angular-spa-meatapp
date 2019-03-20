@@ -6,5 +6,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.sass']
 })
 export class AppComponent {
-  title = 'academy';
+  saulo = {name: 'Saulo', isMatriculado: true, curso: 'Ciência da Computação'}
+  bruna = {name: 'Bruna', isMatriculado: false}
+  willian = {name: 'Willian', isMatriculado: true, curso: 'Sistemas de Informação'}
 }
