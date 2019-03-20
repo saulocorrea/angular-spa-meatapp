@@ -1,6 +1,9 @@
-<div>
-  Estudante: {{student.name}}
-  <div *ngIf="student.isMatriculado">
-    Matriculado no curso {{student.curso}}!
+<div *ngIf="student">
+  Estudante: {{student?.name}}
+  <div *ngIf="student?.isMatriculado">
+    Matriculado no curso {{student?.curso}}!
   </div>
+</div>
+<div *ngIf="!student">
+  Sem dados para exibir.
 </div>
