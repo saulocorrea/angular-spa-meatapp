@@ -1,0 +1,32 @@
+
+
+C:\Users\Saulo\Desktop\CursoTINO\angular\angular>ng new academy --prefix=aca
+? Would you like to add Angular routing? Yes
+? Which stylesheet format would you like to use? Sass   [ http://sass-lang.com/documentation/file.INDENTED_SYNTAX.html ]
+
+
+C:\Users\Saulo\Desktop\CursoTINO\angular\angular>cd academy
+C:\Users\Saulo\Desktop\CursoTINO\angular\angular\academy>ng serve
+** Angular Live Development Server is listening on localhost:4200, open your browser on http://localhost:4200/ **
+
+Date: 2019-03-20T00:06:04.726Z
+Hash: 8d8400943bc994a3bd23
+Time: 18001ms
+chunk {es2015-polyfills} es2015-polyfills.js, es2015-polyfills.js.map (es2015-polyfills) 284 kB [initial] [rendered]
+chunk {main} main.js, main.js.map (main) 11.5 kB [initial] [rendered]
+chunk {polyfills} polyfills.js, polyfills.js.map (polyfills) 236 kB [initial] [rendered]
+chunk {runtime} runtime.js, runtime.js.map (runtime) 6.08 kB [entry] [rendered]
+chunk {styles} styles.js, styles.js.map (styles) 16.7 kB [initial] [rendered]
+chunk {vendor} vendor.js, vendor.js.map (vendor) 3.76 MB [initial] [rendered]
+i ｢wdm｣: Compiled successfully.
+
+C:\Users\Saulo\Desktop\CursoTINO\angular\angular\academy>ng g c header --spec=false
+
+
+
+
+git init
+git add .
+git commit -m "Adicionando arquivos criados pelo angular-cli."
+git remote add origin https://github.com/saulocorrea/curso-angular.git
+git push -u origin master
