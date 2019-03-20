@@ -1,8 +1,6 @@
 
 <aca-header></aca-header>
 
-<aca-student [student]="saulo"></aca-student>
-<aca-student [student]="bruna"></aca-student>
-<aca-student [student]="willian"></aca-student>
+<aca-student *ngFor="let stud of students" [student]="stud"></aca-student>
 
 <router-outlet></router-outlet>
