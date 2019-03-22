@@ -1,5 +1,5 @@
 <div *ngIf="student">
-  Estudante: {{student?.name}}
+  Estudante: <a href="#" (click)="clicked()">{{student?.name}}</a>
   <div *ngIf="student?.isMatriculado">
     Matriculado no curso {{student?.curso}}!
   </div>
