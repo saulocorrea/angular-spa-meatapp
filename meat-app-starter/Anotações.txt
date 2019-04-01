@@ -1,5 +1,8 @@
 clonado de: https://github.com/cod3rcursos/meat-app-starter.git
 
+
+
+
 npm i
 ng serve
 
@@ -7,3 +10,18 @@ ng serve
 ng g c header --spec=false
 
 ng g c home --spec=false
+
+ng g c about --spec=false
+
+ng g c restaurants --spec=false
+
+ng g c restaurants/restaurant --spec=false
+
+
+git init
+git add .
+git commit -m ""
+git push -u origin master
+
+Username for 'https://github.com': sauloejrv@gmail.com
+Password for 'https://sauloejrv@gmail.com@github.com': Pai50Mae52Eu88
