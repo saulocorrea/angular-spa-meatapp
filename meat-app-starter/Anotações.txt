@@ -25,3 +25,33 @@ git push -u origin master
 
 Username for 'https://github.com': sauloejrv@gmail.com
 Password for 'https://sauloejrv@gmail.com@github.com': Pai50Mae52Eu88
+
+
+npm i -g json-server
+json-server db.json
+
+C:\CursoTino\curso-angular\meat-app-starter>json-server db.json
+
+  \{^_^}/ hi!
+
+  Loading db.json
+  Done
+
+  Resources
+  http://localhost:3000/restaurants
+  http://localhost:3000/menu
+  http://localhost:3000/reviews
+  http://localhost:3000/orders
+
+  Home
+  http://localhost:3000
+
+  Type s + enter at any time to create a snapshot of the database
+GET /restaurants 200 9.764 ms - -
+GET /db 200 0.705 ms - -
+GET /__rules 404 3.560 ms - 2
+GET /menu 200 5.422 ms - -
+GET /reviews 200 3.690 ms - -
+GET /reviews 304 5.173 ms - -
+GET /orders 200 4.586 ms - 2
+
