@@ -20,7 +20,7 @@ ng g c restaurants/restaurant-detail --spec=false
 ng g c restaurants/restaurant-detail/menu --spec=false
 ng g c restaurants/restaurant-detail/carrinho --spec=false
 ng g c restaurants/restaurant-detail/menu-item --spec=false
-
+ng g c restaurants/restaurant-detail/reviews --spec=false
 
 git init
 git add .
