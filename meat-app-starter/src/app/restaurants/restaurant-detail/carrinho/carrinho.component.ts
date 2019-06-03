@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CarrinhoService } from './carrinho.service';
+import { CarrinhoItem } from './carrinho-item-model';
+import { MenuItem } from '../menu-item/menu-item.model';
 
 @Component({
   selector: 'mt-carrinho',
@@ -12,11 +14,23 @@ export class CarrinhoComponent implements OnInit {
   ngOnInit() {
   }
 
-  items(): any[] {
+  items(): CarrinhoItem[] {
     return this.carrinhoService.items;
   }
 
   total(): number {
     return this.carrinhoService.total();
+  }
+
+  limpar() {
+    this.carrinhoService.limpar();
+  }
+
+  removerItem(item: CarrinhoItem) {
+    this.carrinhoService.removerItem(item);
+  }
+
+  adicionarItem(item: MenuItem) {
+    this.carrinhoService.adicionarItem(item);
   }
 }

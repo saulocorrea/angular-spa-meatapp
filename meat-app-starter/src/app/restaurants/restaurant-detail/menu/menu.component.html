@@ -4,10 +4,10 @@
   <mt-menu-item 
     *ngFor="let item of menu | async"
     [item]="item"
-    (adicionar)="adicionarMenuItem($event)"></mt-menu-item>
+    (adicionar)="carrinhoTemplateVariable.adicionarItem($event)"></mt-menu-item>
   
 </div>
 <div class="col-md-3 col-xs-12">
-  <mt-carrinho></mt-carrinho>
+  <mt-carrinho #carrinhoTemplateVariable></mt-carrinho>
 </div>
 <!-- FIM DO MENU -->
