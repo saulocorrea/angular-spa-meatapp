@@ -16,6 +16,7 @@
 .c9/
 *.launch
 .settings/
+.vs/
 
 # misc
 /.sass-cache
@@ -33,3 +34,4 @@ testem.log
 #System Files
 .DS_Store
 Thumbs.db
+
