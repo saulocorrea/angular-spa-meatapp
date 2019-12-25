@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpModule } from '@angular/http';
+import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 
 
@@ -18,6 +19,8 @@ import { CarrinhoComponent } from './restaurants/restaurant-detail/carrinho/carr
 import { MenuItemComponent } from './restaurants/restaurant-detail/menu-item/menu-item.component';
 import { ReviewsComponent } from './restaurants/restaurant-detail/reviews/reviews.component';
 import { CarrinhoService } from './restaurants/restaurant-detail/carrinho/carrinho.service';
+import { OrderComponent } from './order/order.component';
+import { InputContainerComponent } from './shared/input-container/input-container.component';
 
 
 @NgModule({
@@ -32,11 +35,14 @@ import { CarrinhoService } from './restaurants/restaurant-detail/carrinho/carrin
     MenuComponent,
     CarrinhoComponent,
     MenuItemComponent,
-    ReviewsComponent
+    ReviewsComponent,
+    OrderComponent,
+    InputContainerComponent
   ],
   imports: [
     BrowserModule,
     HttpModule,
+    FormsModule,
     RouterModule.forRoot(ROUTES)
   ],
   providers: [

@@ -1,8 +1,5 @@
 clonado de: https://github.com/cod3rcursos/meat-app-starter.git
 
-
-
-
 npm i
 ng serve
 
