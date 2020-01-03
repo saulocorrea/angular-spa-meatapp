@@ -23,6 +23,7 @@ import { OrderComponent } from './order/order.component';
 import { InputContainerComponent } from './shared/input-container/input-container.component';
 import { RadioComponent } from './shared/radio/radio.component';
 import { OrderItemsComponent } from './order/order-items/order-items.component';
+import { OrderService } from './order/order.service';
 
 @NgModule({
   declarations: [
@@ -50,7 +51,8 @@ import { OrderItemsComponent } from './order/order-items/order-items.component';
   ],
   providers: [
     RestaurantsService,
-    CarrinhoService
+    CarrinhoService,
+    OrderService
   ],
   bootstrap: [AppComponent]
 })
