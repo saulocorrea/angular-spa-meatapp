@@ -4,7 +4,7 @@ import { CarrinhoItem } from "app/restaurants/restaurant-detail/carrinho/carrinh
 
 @Injectable()
 export class OrderService {
-
+    
   constructor(private carrinhoService: CarrinhoService) { }
 
   carrinhoItens(): CarrinhoItem[] {
@@ -21,5 +21,9 @@ export class OrderService {
 
   removerItem(item: CarrinhoItem): void {
     this.carrinhoService.removerItem(item);
+  }
+
+  carrinhoTotalItens(): number {
+    return this.carrinhoService.total();
   }
 }

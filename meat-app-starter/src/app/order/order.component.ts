@@ -9,6 +9,8 @@ import { CarrinhoItem } from 'app/restaurants/restaurant-detail/carrinho/carrinh
 })
 export class OrderComponent implements OnInit {
 
+  valorFrete: number = 8;
+
   paymentOptions: RadioOptionModel[] = [
     { label: 'Dinheiro', value: 'MON' },
     { label: 'Cartão de Débito', value: 'DEB' },
@@ -18,6 +20,10 @@ export class OrderComponent implements OnInit {
   constructor(private orderService: OrderService) { }
 
   ngOnInit() {
+  }
+
+  carrinhoTotalItens(): number {
+    return this.orderService.carrinhoTotalItens();
   }
 
   carrinhoItens(): CarrinhoItem[] {
