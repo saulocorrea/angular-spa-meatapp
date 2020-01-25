@@ -4,3 +4,5 @@
 
 /.vs
 /meat-app-starter/.vs
+.vs/
+/MeatApp/APIs/Meat.API/obj

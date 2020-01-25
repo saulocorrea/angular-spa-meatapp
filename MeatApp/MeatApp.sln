@@ -1,0 +1,39 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29709.97
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApp", "WebApp\WebApp.csproj", "{0B77C3B7-55A8-4CB2-B7F6-1E9320B64B17}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Web", "Web", "{F851FB1F-164A-4FB7-9AA8-693F0BF77838}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "APIs", "APIs", "{68D06816-D191-4CA9-9D36-4876170781E1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Meat.API", "APIs\Meat.API\Meat.API.csproj", "{54F809C4-9A4E-455E-B61F-53B92C1602A1}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0B77C3B7-55A8-4CB2-B7F6-1E9320B64B17}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0B77C3B7-55A8-4CB2-B7F6-1E9320B64B17}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0B77C3B7-55A8-4CB2-B7F6-1E9320B64B17}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0B77C3B7-55A8-4CB2-B7F6-1E9320B64B17}.Release|Any CPU.Build.0 = Release|Any CPU
+		{54F809C4-9A4E-455E-B61F-53B92C1602A1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{54F809C4-9A4E-455E-B61F-53B92C1602A1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{54F809C4-9A4E-455E-B61F-53B92C1602A1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{54F809C4-9A4E-455E-B61F-53B92C1602A1}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{0B77C3B7-55A8-4CB2-B7F6-1E9320B64B17} = {F851FB1F-164A-4FB7-9AA8-693F0BF77838}
+		{54F809C4-9A4E-455E-B61F-53B92C1602A1} = {68D06816-D191-4CA9-9D36-4876170781E1}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {659BF496-401D-404E-9FD8-F5A83E46E68D}
+	EndGlobalSection
+EndGlobal
