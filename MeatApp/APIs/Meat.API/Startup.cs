@@ -1,15 +1,10 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
+using Shared.Extensions;
+using Shared.Infraestructure.Authorization;
+using Shared.Infraestructure.Authorization.Cors;
 
 namespace Meat.API
 {
@@ -26,26 +21,33 @@ namespace Meat.API
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+
+            //services.AddCustomCors(CorsOrigins.GetAllowedOrigins(Configuration.GetCorsEnvironmentName()));
+            services.AddCors(options =>
+            {
+                options.AddPolicy(AuthorizationConstants.Cors.EnableCors, builder =>
+                {
+                    builder
+                        //.AllowAnyOrigin()
+                        .WithOrigins(CorsOrigins.GetAllowedOrigins(Configuration.GetCorsEnvironmentName()))
+                        .AllowAnyHeader()
+                        .AllowAnyMethod()
+                        .Build();
+                });
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            if (env.IsDevelopment())
-            {
-                app.UseDeveloperExceptionPage();
-            }
-
-            app.UseHttpsRedirection();
+            app.UseCors(AuthorizationConstants.Cors.EnableCors);
 
             app.UseRouting();
-
-            app.UseAuthorization();
-
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
             });
+
         }
     }
 }
