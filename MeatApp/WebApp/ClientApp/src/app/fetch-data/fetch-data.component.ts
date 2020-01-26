@@ -1,5 +1,5 @@
 import { Component, Inject } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Config } from '../config';
 
 @Component({
@@ -11,15 +11,16 @@ export class FetchDataComponent {
 
   constructor(http: HttpClient, @Inject('BASE_URL') baseUrl: string) {
 
-
-    let headers = new HttpHeaders({ 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' });
-    let options = { headers: headers};
-
-
     http.get<WeatherForecast[]>(Config.MeatApi.WeatherForecast)
       .subscribe(result => {
         this.forecasts = result;
       }, error => console.error(error));
+
+    //var httpOptions = { headers: new HttpHeaders({ "Content-Type": "application/json" }) };
+    //http.post<WeatherForecast[]>(Config.MeatApi.WeatherForecast, httpOptions)
+    //    .subscribe(result => {
+    //      this.forecasts = result;
+    //    }, error => console.error(error));
   }
 }
 
