@@ -14,5 +14,10 @@ namespace Shared.Extensions
 
             return environment;
         }
+
+        public static T GetConfiguration<T>(this IConfiguration configuration)
+        {
+            return configuration.GetSection(typeof(T).Name).Get<T>();
+        }
     }
 }

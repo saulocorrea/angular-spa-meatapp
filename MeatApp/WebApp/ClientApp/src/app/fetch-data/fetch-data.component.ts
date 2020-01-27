@@ -1,5 +1,5 @@
 import { Component, Inject } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Config } from '../config';
 
 @Component({
@@ -11,7 +11,9 @@ export class FetchDataComponent {
 
   constructor(http: HttpClient, @Inject('BASE_URL') baseUrl: string) {
 
-    http.get<WeatherForecast[]>(Config.MeatApi.WeatherForecast)
+    var httpOptions = { headers: new HttpHeaders({ "Content-Type": "application/json", "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1ODAxNTAyNDYsImlzcyI6IkFsZ3VtSXNzdWVyIiwiYXVkIjoiQWxndW1hQXVkaWVuY2UifQ.LSvu3E6-4OMYTWt3W9XshxY2LQL07MbFb2XOTTthT4A" }) };
+
+    http.get<WeatherForecast[]>(Config.MeatApi.WeatherForecast, httpOptions)
       .subscribe(result => {
         this.forecasts = result;
       }, error => console.error(error));
