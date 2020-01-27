@@ -8,7 +8,9 @@
         }
         public struct Polices
         {
+            public const string Bearer = "Bearer";
             public const string VizualizacaoWeatherForecast = "VizualizacaoWeatherForecast";
+
         }
     }
 }

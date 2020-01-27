@@ -1,16 +1,15 @@
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.PlatformAbstractions;
 using Microsoft.IdentityModel.Tokens;
 using Shared.Extensions;
 using Shared.Infraestructure.Authorization;
 using Shared.Infraestructure.Authorization.Cors;
 using Shared.Services;
-using Swashbuckle.Swagger;
-using System.IO;
+using System;
 
 namespace Meat.API
 {
@@ -59,17 +58,21 @@ namespace Meat.API
 
                         ValidIssuer = jwtSettings.Issuer,
                         ValidAudience = jwtSettings.Audience,
-                        IssuerSigningKey = new SymmetricSecurityKey(key)
+                        IssuerSigningKey = new SymmetricSecurityKey(key),
+
+                        ClockSkew = TimeSpan.Zero
                     };
                 });
 
-            //services.AddAuthorization(auth =>
-            //{
-            //    auth.AddPolicy("Bearer", new Microsoft.AspNetCore.Authorization.AuthorizationPolicyBuilder()
-            //        .AddAuthenticationSchemes(JwtBearerDefaults.AuthenticationScheme)
-            //        .RequireAuthenticatedUser().Build());
-            //});
-
+            services.AddAuthorization(auth =>
+            {
+                auth.AddPolicy(AuthorizationConstants.Polices.Bearer, 
+                               new AuthorizationPolicyBuilder()
+                                    .AddAuthenticationSchemes(JwtBearerDefaults.AuthenticationScheme)
+                                    .RequireAuthenticatedUser()
+                                    .Build());
+            });
+            
             services.Configure<JwtSettings>(Configuration.GetSection("JwtSettings"));
 
             services.AddScoped<IAuthenticationService, AuthenticationService>();
@@ -78,11 +81,13 @@ namespace Meat.API
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+            app.UseRouting();
+            
             app.UseCors(AuthorizationConstants.Cors.EnableCors);
 
-            app.UseRouting();
-            //app.UseAuthentication();
+            app.UseAuthentication();
             app.UseAuthorization();
+
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();

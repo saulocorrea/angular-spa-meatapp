@@ -1,8 +1,9 @@
 ﻿using Microsoft.IdentityModel.Tokens;
 using Shared.Infraestructure.Authorization;
 using System;
-using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
+using System.Security.Principal;
 using System.Text;
 
 namespace Shared.Services
@@ -18,20 +19,34 @@ namespace Shared.Services
 
         public string GenerateJwtToken()
         {
-            var issuer = _jwtSettings.Issuer;
-            var audience = _jwtSettings.Audience;
-            var expiry = DateTime.Now.AddMinutes(120);
+            ClaimsIdentity identity = new ClaimsIdentity(
+                new GenericIdentity("user.UserID", "Login"),
+                new[] {
+                        new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString("N")),
+                        new Claim(JwtRegisteredClaimNames.UniqueName, "user.UserID")
+                }
+            );
+
+            DateTime dataCriacao = DateTime.Now;
+            DateTime dataExpiracao = dataCriacao +
+                TimeSpan.FromHours(10);
+
             var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_jwtSettings.Key));
             var credentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256);
-            var token = new JwtSecurityToken(
-                issuer: issuer,
-                audience: audience,
-                expires: expiry,
-                signingCredentials: credentials);
-            var tokenHandler = new JwtSecurityTokenHandler();
-            var stringToken = tokenHandler.WriteToken(token);
 
-            return stringToken;
+            var handler = new JwtSecurityTokenHandler();
+            var securityToken = handler.CreateToken(new SecurityTokenDescriptor
+            {
+                Issuer = _jwtSettings.Issuer,
+                Audience = _jwtSettings.Audience,
+                SigningCredentials = credentials,
+                Subject = identity,
+                NotBefore = dataCriacao,
+                Expires = dataExpiracao
+            });
+            var token = handler.WriteToken(securityToken);
+
+            return token;
         }
     }
 }

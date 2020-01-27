@@ -9,20 +9,23 @@ import { Config } from '../config';
 export class FetchDataComponent {
   public forecasts: WeatherForecast[];
 
-  constructor(http: HttpClient, @Inject('BASE_URL') baseUrl: string) {
+  constructor(http: HttpClient) {
+    var headers = new HttpHeaders({ "Content-Type": "application/json" })
+    var httpOptions = { headers: headers };
 
-    var httpOptions = { headers: new HttpHeaders({ "Content-Type": "application/json", "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1ODAxNTAyNDYsImlzcyI6IkFsZ3VtSXNzdWVyIiwiYXVkIjoiQWxndW1hQXVkaWVuY2UifQ.LSvu3E6-4OMYTWt3W9XshxY2LQL07MbFb2XOTTthT4A" }) };
-
-    http.get<WeatherForecast[]>(Config.MeatApi.WeatherForecast, httpOptions)
+    http.get<any>(Config.MeatApi.GetToken)
       .subscribe(result => {
-        this.forecasts = result;
-      }, error => console.error(error));
+        var token = result;
+        if (token && token.token) {
+          httpOptions.headers = httpOptions.headers.append('Authorization', `Bearer ${token.token}`);
 
-    //var httpOptions = { headers: new HttpHeaders({ "Content-Type": "application/json" }) };
-    //http.post<WeatherForecast[]>(Config.MeatApi.WeatherForecast, httpOptions)
-    //    .subscribe(result => {
-    //      this.forecasts = result;
-    //    }, error => console.error(error));
+          http.get<WeatherForecast[]>(Config.MeatApi.WeatherForecast, httpOptions)
+            .subscribe(result => {
+              this.forecasts = result;
+            }, error => console.error(error));
+        }
+
+      }, error => console.error(error));
   }
 }
 

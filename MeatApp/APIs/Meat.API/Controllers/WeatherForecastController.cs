@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
@@ -32,9 +31,9 @@ namespace Meat.API.Controllers
 
         [AllowAnonymous]
         [HttpGet("get-token")]
-        public string GetToken()
+        public object GetToken()
         {
-            return _authenticationService.GenerateJwtToken();
+            return new { Token = _authenticationService.GenerateJwtToken() };
         }
 
         [HttpGet]
