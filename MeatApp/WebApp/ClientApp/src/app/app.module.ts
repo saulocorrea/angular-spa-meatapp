@@ -9,6 +9,8 @@ import { NavMenuComponent } from './nav-menu/nav-menu.component';
 import { HomeComponent } from './home/home.component';
 import { CounterComponent } from './counter/counter.component';
 import { FetchDataComponent } from './fetch-data/fetch-data.component';
+import { JwtInterceptor } from './_helpers/jwt.interceptor';
+import { AuthGuard } from './auth/auth-guard';
 
 @NgModule({
   declarations: [
@@ -23,12 +25,30 @@ import { FetchDataComponent } from './fetch-data/fetch-data.component';
     HttpClientModule,
     FormsModule,
     RouterModule.forRoot([
-      { path: '', component: HomeComponent, pathMatch: 'full' },
-      { path: 'counter', component: CounterComponent },
-      { path: 'fetch-data', component: FetchDataComponent },
+      {
+        path: '',
+        component: HomeComponent,
+        pathMatch: 'full'
+      },
+      {
+        path: 'counter',
+        component: CounterComponent,
+        canActivate: [AuthGuard],
+        canActivateChild: [AuthGuard]
+      },
+      {
+        path: 'fetch-data',
+        component: FetchDataComponent,
+        canActivate: [AuthGuard],
+        canActivateChild: [AuthGuard]
+      },
     ])
   ],
-  providers: [],
+  providers: [{
+    provide: HTTP_INTERCEPTORS,
+    useClass: JwtInterceptor,
+    multi: true
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

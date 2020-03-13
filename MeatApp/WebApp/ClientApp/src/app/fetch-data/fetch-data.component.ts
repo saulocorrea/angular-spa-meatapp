@@ -13,18 +13,9 @@ export class FetchDataComponent {
     var headers = new HttpHeaders({ "Content-Type": "application/json" })
     var httpOptions = { headers: headers };
 
-    http.get<any>(Config.MeatApi.GetToken)
+    http.get<WeatherForecast[]>(Config.MeatApi.WeatherForecast, httpOptions)
       .subscribe(result => {
-        var token = result;
-        if (token && token.token) {
-          httpOptions.headers = httpOptions.headers.append('Authorization', `Bearer ${token.token}`);
-
-          http.get<WeatherForecast[]>(Config.MeatApi.WeatherForecast, httpOptions)
-            .subscribe(result => {
-              this.forecasts = result;
-            }, error => console.error(error));
-        }
-
+        this.forecasts = result;
       }, error => console.error(error));
   }
 }
