@@ -24,11 +24,21 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="ClientApp\src\app\auth\auth-guard.ts" />
+    <None Remove="ClientApp\src\app\auth\token.ts" />
     <None Remove="ClientApp\src\app\config.ts" />
+    <None Remove="ClientApp\src\app\_helpers\jwt.interceptor.ts" />
+    <None Remove="ClientApp\src\app\_services\auth.service.ts" />
   </ItemGroup>
 
   <ItemGroup>
+    <TypeScriptCompile Include="ClientApp\src\app\auth\auth-guard.ts">
+      <SubType>Code</SubType>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="ClientApp\src\app\auth\token.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\config.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\_helpers\jwt.interceptor.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\_services\auth.service.ts" />
   </ItemGroup>
 
   <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">
