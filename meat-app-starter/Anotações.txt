@@ -56,3 +56,6 @@ GET /reviews 200 3.690 ms - -
 GET /reviews 304 5.173 ms - -
 GET /orders 200 4.586 ms - 2
 
+
+https://docs.github.com/en/code-security/supply-chain-security/configuration-options-for-dependency-updates
+https://docs.github.com/en/code-security/supply-chain-security/customizing-dependency-updates
