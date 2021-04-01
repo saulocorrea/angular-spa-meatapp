@@ -37,7 +37,7 @@
         </div>
         <div class="col-sm-3 col-xs-6">
           <mt-input-container label="Complemento" errorMessage="">
-            <input type="text" class="form-control" name="complement" ngModel placeholder="Complemento">
+            <input type="text" class="form-control" name="optionalAddress" ngModel placeholder="Complemento">
           </mt-input-container>
         </div>
         <!-- /.col -->
@@ -82,7 +82,10 @@
 
     <div class="row">
       <div class="col-xs-12">
-        <button class="btn btn-success pull-right" [disabled]="!form.valid">
+        <button 
+            class="btn btn-success pull-right" 
+            [disabled]="!form.valid || carrinhoItens().length === 0"
+            (click)="finalizarCompra(form.value)">
           <i class="fa fa-credit-card"></i> Concluir Pedido
         </button>
       </div>
