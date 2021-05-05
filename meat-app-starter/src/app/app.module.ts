@@ -19,13 +19,11 @@ import { MenuItemComponent } from './restaurants/restaurant-detail/menu-item/men
 import { ReviewsComponent } from './restaurants/restaurant-detail/reviews/reviews.component';
 import { CarrinhoService } from './restaurants/restaurant-detail/carrinho/carrinho.service';
 import { OrderComponent } from './order/order.component';
-import { InputContainerComponent } from './shared/input-container/input-container.component';
-import { RadioComponent } from './shared/radio/radio.component';
 import { OrderItemsComponent } from './order/order-items/order-items.component';
 import { OrderService } from './order/order.service';
 import { OrderTotalComponent } from './order/order-total/order-total.component';
 import { OrderResumoComponent } from './order-resumo/order-resumo.component';
-import { RatingComponent } from './shared/rating/rating.component';
+import { SharedModule } from './shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -40,18 +38,16 @@ import { RatingComponent } from './shared/rating/rating.component';
     MenuItemComponent,
     ReviewsComponent,
     OrderComponent,
-    InputContainerComponent,
-    RadioComponent,
     OrderItemsComponent,
     OrderTotalComponent,
-    OrderResumoComponent,
-    RatingComponent
+    OrderResumoComponent
   ],
   imports: [
     BrowserModule,
     HttpModule,
     FormsModule,
-    RouterModule.forRoot(ROUTES)
+    RouterModule.forRoot(ROUTES),
+    SharedModule
   ],
   providers: [
     RestaurantsService,
