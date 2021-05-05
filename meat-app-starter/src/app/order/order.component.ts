@@ -3,6 +3,7 @@ import { RadioOptionModel } from 'app/shared/radio/radio-option.model';
 import { OrderService } from './order.service';
 import { CarrinhoItem } from 'app/restaurants/restaurant-detail/carrinho/carrinho-item-model';
 import { Pedido, PedidoItem } from './order-model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'mt-order',
@@ -18,7 +19,8 @@ export class OrderComponent implements OnInit {
     { label: 'Cartão Refeição', value: 'REF' },
   ];
 
-  constructor(private orderService: OrderService) { }
+  constructor(private orderService: OrderService,
+              private router: Router) { }
 
   ngOnInit() {
   }
@@ -52,6 +54,7 @@ export class OrderComponent implements OnInit {
     this.orderService.finalizarPedido(pedido)
       .subscribe((orderId: string) => {
         console.log(`Compra concluída: ${orderId}`);
+        this.router.navigate(['/order-summary']);
 
         this.orderService.limpar();
       });
