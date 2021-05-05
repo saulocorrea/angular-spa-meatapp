@@ -11,16 +11,14 @@ import { HomeComponent } from './home/home.component';
 import { ROUTES } from './app.routes';
 import { RestaurantsComponent } from './restaurants/restaurants.component';
 import { RestaurantComponent } from './restaurants/restaurant/restaurant.component';
-import { RestaurantsService } from './restaurants/restaurants.service';
 import { RestaurantDetailComponent } from './restaurants/restaurant-detail/restaurant-detail.component';
 import { MenuComponent } from './restaurants/restaurant-detail/menu/menu.component';
 import { CarrinhoComponent } from './restaurants/restaurant-detail/carrinho/carrinho.component';
 import { MenuItemComponent } from './restaurants/restaurant-detail/menu-item/menu-item.component';
 import { ReviewsComponent } from './restaurants/restaurant-detail/reviews/reviews.component';
-import { CarrinhoService } from './restaurants/restaurant-detail/carrinho/carrinho.service';
-import { OrderService } from './order/order.service';
 import { OrderResumoComponent } from './order-resumo/order-resumo.component';
 import { SharedModule } from './shared/shared.module';
+import { CoreModule } from './core/core.module';
 
 @NgModule({
   declarations: [
@@ -41,12 +39,10 @@ import { SharedModule } from './shared/shared.module';
     HttpModule,
     FormsModule,
     RouterModule.forRoot(ROUTES),
-    SharedModule
+    SharedModule,
+    CoreModule
   ],
   providers: [
-    RestaurantsService,
-    CarrinhoService,
-    OrderService,
     {provide: LOCALE_ID, useValue: 'pt-BR'}
   ],
   bootstrap: [AppComponent]
