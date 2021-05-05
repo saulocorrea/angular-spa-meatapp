@@ -18,7 +18,6 @@ import { MenuItemComponent } from './restaurants/restaurant-detail/menu-item/men
 import { ReviewsComponent } from './restaurants/restaurant-detail/reviews/reviews.component';
 import { OrderResumoComponent } from './order-resumo/order-resumo.component';
 import { SharedModule } from './shared/shared.module';
-import { CoreModule } from './core/core.module';
 
 @NgModule({
   declarations: [
@@ -39,8 +38,7 @@ import { CoreModule } from './core/core.module';
     HttpModule,
     FormsModule,
     RouterModule.forRoot(ROUTES),
-    SharedModule,
-    CoreModule
+    SharedModule.forRoot() //importa todos os Components AND os Servicos do modulo Shared (ModuleWithProviders)
   ],
   providers: [
     {provide: LOCALE_ID, useValue: 'pt-BR'}

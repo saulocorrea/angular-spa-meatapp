@@ -16,7 +16,7 @@ const ROUTES: Routes = [
         OrderTotalComponent
     ],
     imports: [
-        SharedModule,
+        SharedModule, //importa apenas os Components do modulo Shared
         RouterModule.forChild(ROUTES)
     ]
 })
