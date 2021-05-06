@@ -5,6 +5,7 @@ import { RestaurantDetailComponent } from "./restaurants/restaurant-detail/resta
 import { MenuComponent } from "./restaurants/restaurant-detail/menu/menu.component";
 import { ReviewsComponent } from "./restaurants/restaurant-detail/reviews/reviews.component";
 import { OrderResumoComponent } from "./order-resumo/order-resumo.component";
+import { NotFoundComponent } from "./not-found/not-found.component";
 
 export const ROUTES: Routes = [
     { path: '', component: HomeComponent },
@@ -20,4 +21,5 @@ export const ROUTES: Routes = [
     },
     { path: 'order', loadChildren: './order/order.module#OrderModule' },
     { path: 'order-summary', component: OrderResumoComponent },
+    { path: '**', component: NotFoundComponent}, //Wildcard route
 ]
