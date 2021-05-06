@@ -4,12 +4,18 @@ import { OrderService } from './order.service';
 import { CarrinhoItem } from 'app/restaurants/restaurant-detail/carrinho/carrinho-item-model';
 import { Pedido, PedidoItem } from './order-model';
 import { Router } from '@angular/router';
+import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'mt-order',
   templateUrl: './order.component.html'
 })
 export class OrderComponent implements OnInit {
+
+  emailPattern = /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
+  numberPattern = /^[0-9]*$/;
+
+  orderForm: FormGroup;
 
   valorFrete: number = 8;
 
@@ -20,9 +26,36 @@ export class OrderComponent implements OnInit {
   ];
 
   constructor(private orderService: OrderService,
-              private router: Router) { }
+    private router: Router,
+    private formBuilder: FormBuilder) { }
 
   ngOnInit() {
+    this.orderForm = this.formBuilder.group({
+      name: ['', [Validators.required, Validators.minLength(5)]],
+      email: ['', [Validators.required, Validators.pattern(this.emailPattern)]],
+      emailConfirmation: ['', [Validators.required, Validators.pattern(this.emailPattern)]],
+      address: ['', [Validators.required, Validators.minLength(5)]],
+      number: ['', [Validators.required, Validators.pattern(this.numberPattern)]],
+      optionalAddress: [''],
+      paymentOption: ['', [Validators.required]]
+    },
+      {
+        validator: OrderComponent.equalsTo
+      });
+  }
+
+  static equalsTo(group: AbstractControl): { [key: string]: boolean } {
+    const email = group.get('email');
+    const emailConfirmation = group.get('emailConfirmation');
+    if (!email || !emailConfirmation) {
+      return undefined;
+    }
+
+    if (email.value !== emailConfirmation.value) {
+      return { emailsNotMatch: true }
+    }
+
+    return undefined;
   }
 
   carrinhoTotalItens(): number {
