@@ -4,6 +4,11 @@ npm i
 ng serve
 
 
+ng build
+ng build --prod
+
+
+
 ng g c header --spec=false
 
 ng g c home --spec=false
